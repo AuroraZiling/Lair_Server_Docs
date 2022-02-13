@@ -57,6 +57,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -183,7 +188,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../minecraft-server-selection/" class="md-tabs__link md-tabs__link--active">
+        <a href="./" class="md-tabs__link md-tabs__link--active">
           教程
         </a>
       
@@ -391,30 +396,6 @@
           
           
 
-
-  <li class="md-nav__item">
-    <a href="../minecraft-server-selection/" title="Minecraft服务端的选择" class="md-nav__link">
-      Minecraft服务端的选择
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../minecraft-server-deployment/" title="Minecraft服务器的搭建" class="md-nav__link">
-      Minecraft服务器的搭建
-    </a>
-  </li>
-
-        
-          
-          
-          
-
   
 
 
@@ -422,10 +403,62 @@
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        服务器配置文件解析
+        <span class="md-nav__icon md-icon"></span>
+      </label>
     
     <a href="./" title="服务器配置文件解析" class="md-nav__link md-nav__link--active">
       服务器配置文件解析
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#serverproperties" class="md-nav__link">
+    server.properties
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bukkityml" class="md-nav__link">
+    bukkit.yml
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spigotyml" class="md-nav__link">
+    spigot.yml
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paperyml" class="md-nav__link">
+    paper.yml
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -492,6 +525,57 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#serverproperties" class="md-nav__link">
+    server.properties
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bukkityml" class="md-nav__link">
+    bukkit.yml
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spigotyml" class="md-nav__link">
+    spigot.yml
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paperyml" class="md-nav__link">
+    paper.yml
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
@@ -501,9 +585,388 @@
                   
                 
                 
-                  <h1>服务器配置文件解析</h1>
-                
-                
+                <h1 id="_1">服务器配置文件解析</h1>
+<h2 id="serverproperties">server.properties</h2>
+<p><strong>适用于Minecraft 1.18 服务器</strong></p>
+<ol>
+<li>
+<p>enable-jmx-monitoring</p>
+<p>类型：布尔值</p>
+<p>默认值：false</p>
+<p>暴露一个具有对象名<code>net.minecraft.server:type=Server</code>的<code>MBean</code>和两个属性<code>averageTickTime</code>和<code>tickTimes</code>用于暴露以毫秒为单位的tick时间</p>
+<p>如果你要启用JMX, 请前往<a href="https://docs.oracle.com/javase/8/docs/technotes/guides/management/agent.html">Monitoring and Management Using JMX Technology</a>查阅详细参数设置</p>
+</li>
+<li>
+<p>rcon.port</p>
+<p>类型：整型（1-65534）</p>
+<p>默认值：25575</p>
+<p>设置RCON远程访问的端口号（前提是<code>enable-rcon</code>的值为true）</p>
+</li>
+<li>
+<p>gamemode</p>
+<p>类型：字符串/整型（0-3）</p>
+<p>默认值：survival</p>
+<p>定义默认游戏模式</p>
+<p>survival (0) - 生存模式</p>
+<p>creative (1) - 创造模式</p>
+<p>adventure (2) - 冒险模式</p>
+<p>spectator (3) - 旁观模式</p>
+</li>
+<li>
+<p>enable-command-block</p>
+<p>类型：布尔值</p>
+<p>默认值：false</p>
+<p>是否启用命令方块</p>
+</li>
+<li>
+<p>enable-query</p>
+<p>类型：布尔值</p>
+<p>默认值：false</p>
+<p>是否允许使用GameSpy4协议的服务器监听器</p>
+</li>
+<li>
+<p>level-name</p>
+<p>类型：字符串</p>
+<p>默认值：world</p>
+<p>此参数的值将作为世界名称及其文件夹名（存档）</p>
+<p>注意：<code>'</code>（单引号）需要在前面加反斜杠号<code>\</code>才能被检测到</p>
+</li>
+<li>
+<p>motd</p>
+<p>类型：字符串</p>
+<p>默认值：A Minecraft Server</p>
+<p>玩家客户端的多人游戏服务器列表中显示的服务器信息，显示于名称下方</p>
+<p>支持样式代码、特殊符号，但不能超过59个字符</p>
+</li>
+<li>
+<p>query.port</p>
+<p>类型：整型（1-65534）</p>
+<p>默认值：25565</p>
+<p>设置监听服务器的端口号（前提是<code>enable-query</code>的值为true）</p>
+</li>
+<li>
+<p>pvp</p>
+<p>类型：布尔型</p>
+<p>默认值：true</p>
+<p>是否允许玩家互相残杀</p>
+<p>注意：间接伤害无法因此避免</p>
+</li>
+<li>
+<p>difficulty</p>
+<p>类型：字符串/整型(0-3)</p>
+<p>默认值：easy</p>
+<p>世界难度：</p>
+<p>peaceful (0) - 和平</p>
+<p>easy (1) - 简单</p>
+<p>normal (2) - 普通</p>
+<p>hard (3) - 困难</p>
+</li>
+<li>
+<p>network-compression-threshold</p>
+<p>类型：整数（尽量在64-1500之间）</p>
+<p>默认值：256</p>
+<p>wiki的太复杂了，说白了就是：</p>
+<p>如果你网好，值设大一点；否则就小点</p>
+<p>原理：</p>
+<p>默认会允许n-1字节的数据包正常发送, 如果数据包为n字节或更大时会进行压缩。所以，更低的数值会使得更多的数据包被压缩，但是如果被压缩的数据包字节太小将反而使压缩后字节更大</p>
+</li>
+<li>
+<p>require-resource-pack</p>
+<p>类型：字符串(URL)</p>
+<p>默认值：false</p>
+<p>指向一个资源包的URL，玩家可选择是否使用该资源包</p>
+</li>
+<li>
+<p>max-tick-time</p>
+<p>类型：整型（0 - 2^63-1）</p>
+<p>默认值：60000</p>
+<p>每个tick花费的最大毫秒数</p>
+<p>若服务器的每个tick超过所设置的毫秒数，服务器将会自动崩溃</p>
+<p>你可以设置为<code>-1</code>，禁用此参数</p>
+</li>
+<li>
+<p>use-native-transport</p>
+<p>类型：布尔值</p>
+<p>默认值：true</p>
+<p>是否使用针对Linux平台的数据包收发优化</p>
+</li>
+<li>
+<p>max-players</p>
+<p>类型：整型（0-2147483647）</p>
+<p>默认值：20</p>
+<p>服务器同时能容纳的最大玩家数量</p>
+<p>注意：此数值越大，服务器负担越重</p>
+</li>
+<li>
+<p>online-mode</p>
+<p>类型：布尔值</p>
+<p>默认值：true</p>
+<p>是否让服务器对比Minecraft账户数据库验证登录信息</p>
+<p>注意：如果你启用了<code>yggdrasil</code>类似的第三方登录，参数为 true</p>
+</li>
+<li>
+<p>enable-status</p>
+<p>类型：布尔值</p>
+<p>默认值：true</p>
+<p>是否使服务器在服务器列表中看起来是在线的</p>
+</li>
+<li>
+<p>allow-flight</p>
+<p>类型：布尔值</p>
+<p>默认值：false</p>
+<p>如果是 false，则生存模式玩家悬空超过5秒就被踢出，如果是 true，就不会</p>
+</li>
+<li>
+<p>broadcast-rcon-to-ops</p>
+<p>类型：布尔值</p>
+<p>默认值：true</p>
+<p>是否向所有在线OP发送通过RCON执行的命令的输出</p>
+</li>
+<li>
+<p>view-distance</p>
+<p>类型：整型（3-32）</p>
+<p>默认值：10</p>
+<p>设置服务端发送给客户端的世界数据量，也就是设置玩家各个方向上的区块数量（以玩家为中心的半径）</p>
+</li>
+<li>
+<p>server-ip</p>
+<p>类型：字符串(IP)</p>
+<p>默认值：无</p>
+<p>将服务器与一个特定IP绑定，建议留空</p>
+</li>
+<li>
+<p>resource-pack-prompt</p>
+<p>类型：字符串</p>
+<p>默认值：无</p>
+<p>在使用<code>require-resource-pack</code>时在资源包提示界面显示自定义信息</p>
+<p>与聊天组件语法一致，可以包含多行文本</p>
+</li>
+<li>
+<p>allow-nether</p>
+<p>类型：布尔值</p>
+<p>默认值：true</p>
+<p>是否允许玩家通过下界传送门前往下界</p>
+</li>
+<li>
+<p>server-port</p>
+<p>类型：整型（1-65534）</p>
+<p>默认值：25565</p>
+<p>服务器（监听的）端口号</p>
+</li>
+<li>
+<p>enable-rcon</p>
+<p>类型：布尔值</p>
+<p>默认值：false</p>
+<p>是否允许远程访问服务器控制台</p>
+<p>注意：RCON协议未加密，谨慎使用</p>
+</li>
+<li>
+<p>sync-chunk-writes</p>
+<p>类型：布尔值</p>
+<p>默认值：true</p>
+<p>是否允许区块文件以同步模式写入</p>
+</li>
+<li>
+<p>op-permission-level</p>
+<p>类型：整型（1-4）</p>
+<p>默认值：4</p>
+<p>OP的权限等级</p>
+</li>
+<li>
+<p>prevent-proxy-connections</p>
+<p>类型：布尔值</p>
+<p>默认值：false</p>
+<p>如果服务器发送的ISP/AS和Mojang的验证服务器的不一样，玩家将会被踢出</p>
+<p>说白了就是是否禁止玩家使用代理或者VPN进入服务器</p>
+</li>
+<li>
+<p>hide-online-players</p>
+<p>类型：布尔值</p>
+<p>默认值：false</p>
+<p>是否让服务端在响应客户端状态请求时不会返回在线玩家列表</p>
+</li>
+<li>
+<p>resource-pack</p>
+<p>默认值：无</p>
+</li>
+<li>
+<p>entity-broadcast-range-percentage</p>
+<p>类型：整型（10-1000）</p>
+<p>默认值：100</p>
+<p>实体需要距离玩家有多近才会将数据包发送给客户端</p>
+<p>数值越高，实体可以在更远的地方被渲染，同时会增加延迟</p>
+</li>
+<li>
+<p>simulation-distance</p>
+<p>类型：整型（3-32）</p>
+<p>默认值：10</p>
+<p>设置服务端可更新实体范围的最大值，即玩家各个方向上的区块数量（以玩家为中心的半径）</p>
+</li>
+<li>
+<p>rcon.password</p>
+<p>类型：字符串</p>
+<p>默认值：无</p>
+<p>设置RCON远程访问的密码(前提是<code>enable-rcon</code>的值为true)</p>
+</li>
+<li>
+<p>player-idle-timeout</p>
+<p>类型：整型</p>
+<p>默认值：0</p>
+<p>如果不为0，服务器将在玩家的空闲时间达到设置的时间（单位：分钟）时将玩家踢出服务器</p>
+<p>注：当服务器接受到下列数据包之一时将会重置空闲时间：点击窗口、附魔物品、更新告示牌、玩家挖掘方块、玩家放置方块、更换拿着的物品、动画(挥动手臂)、实体动作、客户端状态、聊天信息、使用实体</p>
+</li>
+<li>
+<p>debug</p>
+<p>默认值：false</p>
+</li>
+<li>
+<p>force-gamemode</p>
+<p>类型：布尔值</p>
+<p>默认值：false</p>
+<p>是否强制玩家加入时为默认游戏模式</p>
+</li>
+<li>
+<p>rate-limit</p>
+<p>类型：整型</p>
+<p>默认值：0</p>
+<p>设置玩家被踢出服务器前，可以发送的数据包数量</p>
+<p>设置为0表示关闭此功能</p>
+</li>
+<li>
+<p>hardcore</p>
+<p>类型：布尔值</p>
+<p>默认值：false</p>
+<p>如果设为 true，服务器难度的设置会被忽略并且设为困难，玩家在死后会自动切换至旁观模式</p>
+</li>
+<li>
+<p>white-list</p>
+<p>类型：布尔值</p>
+<p>默认值：false</p>
+<p>是否启用服务器的白名单</p>
+<p>注意：OP自动视为白名单玩家</p>
+</li>
+<li>
+<p>broadcast-console-ops</p>
+<p>类型：布尔值</p>
+<p>默认值：true</p>
+<p>是否向所有在线OP发送所执行命令的输出</p>
+</li>
+<li>
+<p>spawn-npcs</p>
+<p>类型：布尔值</p>
+<p>默认值：true</p>
+<p>是否允许生成村民</p>
+</li>
+<li>
+<p>spawn-animals</p>
+<p>类型：布尔值</p>
+<p>默认值：true</p>
+<p>是否允许自然生成动物</p>
+</li>
+<li>
+<p>function-permission-level</p>
+<p>类型：整型（1-4）</p>
+<p>默认值：2</p>
+<p>设定函数的默认权限等级</p>
+</li>
+<li>
+<p>text-filtering-config</p>
+<p>无资料</p>
+<p>默认值：无</p>
+</li>
+<li>
+<p>spawn-monsters</p>
+<p>类型：布尔值</p>
+<p>默认值：true</p>
+<p>是否允许攻击型生物生成</p>
+</li>
+<li>
+<p>enforce-whitelist</p>
+<p>类型：布尔值</p>
+<p>默认值：false</p>
+<p>是否在服务器上强制执行白名单</p>
+<p>true - 不在白名单上的用户会被踢出</p>
+<p>false - 不在白名单上的在线用户不会被踢出</p>
+</li>
+<li>
+<p>resource-pack-sha1</p>
+<p>类型：字符串</p>
+<p>默认值：无</p>
+<p>资源包的SHA-1值，必须为小写十六进制；尽管不能验证资源包的完整性，但是它提高了资源包缓存的有效性和可靠性</p>
+</li>
+<li>
+<p>spawn-protection</p>
+<p>类型：整型</p>
+<p>默认值：16</p>
+<p>通过将该值进行2x+1的运算来决定出生点的保护半径（如果没有OP，此参数无效）</p>
+<p>设置为0禁用此参数</p>
+</li>
+<li>
+<p>max-world-size</p>
+<p>类型：整型（1-29999984）</p>
+<p>默认值：29999984</p>
+<p>可让世界边界获得的最大半径值（单位：方块）</p>
+<p>若设置的参数超过默认值，将不会起任何效果</p>
+</li>
+</ol>
+<p>原文件:</p>
+<pre><code>#Minecraft server properties
+#XXX XXX XX XX:XX:XX CST XXXX
+enable-jmx-monitoring=false
+rcon.port=25575
+gamemode=survival
+enable-command-block=false
+enable-query=false
+level-name=world
+motd=A Minecraft Server
+query.port=25565
+pvp=true
+difficulty=easy
+network-compression-threshold=256
+require-resource-pack=false
+max-tick-time=60000
+use-native-transport=true
+max-players=20
+online-mode=true
+enable-status=true
+allow-flight=false
+broadcast-rcon-to-ops=true
+view-distance=10
+server-ip=
+resource-pack-prompt=
+allow-nether=true
+server-port=25565
+enable-rcon=false
+sync-chunk-writes=true
+op-permission-level=4
+prevent-proxy-connections=false
+hide-online-players=false
+resource-pack=
+entity-broadcast-range-percentage=100
+simulation-distance=10
+rcon.password=
+player-idle-timeout=0
+debug=false
+force-gamemode=false
+rate-limit=0
+hardcore=false
+white-list=false
+broadcast-console-to-ops=true
+spawn-npcs=true
+spawn-animals=true
+function-permission-level=2
+text-filtering-config=
+spawn-monsters=true
+enforce-whitelist=false
+resource-pack-sha1=
+spawn-protection=16
+max-world-size=29999984
+
+</code></pre>
+
+<h2 id="bukkityml">bukkit.yml</h2>
+<h2 id="spigotyml">spigot.yml</h2>
+<h2 id="paperyml">paper.yml</h2>
                 
               
               
@@ -522,7 +985,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../minecraft-server-deployment/" title="Minecraft服务器的搭建" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../rules/donate-rule/" title="赞助" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -531,7 +994,7 @@
                 <span class="md-footer-nav__direction">
                   上一页
                 </span>
-                Minecraft服务器的搭建
+                赞助
               </div>
             </div>
           </a>
@@ -569,6 +1032,15 @@
       </div>
       
   <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://kaihei.co/nOW806" target="_blank" rel="noopener" title="kaihei.co" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M297.216 243.2c0 15.616-11.52 28.416-26.112 28.416-14.336 0-26.112-12.8-26.112-28.416s11.52-28.416 26.112-28.416c14.592 0 26.112 12.8 26.112 28.416zm-119.552-28.416c-14.592 0-26.112 12.8-26.112 28.416s11.776 28.416 26.112 28.416c14.592 0 26.112-12.8 26.112-28.416.256-15.616-11.52-28.416-26.112-28.416zM448 52.736V512c-64.494-56.994-43.868-38.128-118.784-107.776l13.568 47.36H52.48C23.552 451.584 0 428.032 0 398.848V52.736C0 23.552 23.552 0 52.48 0h343.04C424.448 0 448 23.552 448 52.736zm-72.96 242.688c0-82.432-36.864-149.248-36.864-149.248-36.864-27.648-71.936-26.88-71.936-26.88l-3.584 4.096c43.52 13.312 63.744 32.512 63.744 32.512-60.811-33.329-132.244-33.335-191.232-7.424-9.472 4.352-15.104 7.424-15.104 7.424s21.248-20.224 67.328-33.536l-2.56-3.072s-35.072-.768-71.936 26.88c0 0-36.864 66.816-36.864 149.248 0 0 21.504 37.12 78.08 38.912 0 0 9.472-11.52 17.152-21.248-32.512-9.728-44.8-30.208-44.8-30.208 3.766 2.636 9.976 6.053 10.496 6.4 43.21 24.198 104.588 32.126 159.744 8.96 8.96-3.328 18.944-8.192 29.44-15.104 0 0-12.8 20.992-46.336 30.464 7.68 9.728 16.896 20.736 16.896 20.736 56.576-1.792 78.336-38.912 78.336-38.912z"/></svg>
+      </a>
     
       
       
